@@ -6,7 +6,10 @@ module.exports = Backbone.View.extend({
 	className: 'countdown island',
 
 	initialize: function() {
-		this.listenTo(this.model, 'change:time', this.render);
+		this.listenTo(this.model, 'change:time', function() {
+			this.render();
+			this.updateTitleTime(this.model.get('time'));
+		});
 	},
     render: function() {
 	    var time = this.model.get('time');
@@ -35,5 +38,9 @@ module.exports = Backbone.View.extend({
 	parseSeconds: function(time) {
 		time = parseInt(time % 60);
 		return this.parseTime(time);
+	},
+
+	updateTitleTime: function(time) {
+		$('title').html(this.parseMinutes(time) + ':' + this.parseSeconds(time) + ' Pomodo');
 	}
 });
