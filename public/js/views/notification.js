@@ -45,9 +45,9 @@ module.exports = Backbone.View.extend({
 	audioNotification: function() {
 		if (this.model.get('audioEnabled') && this.model.get('message')) {
 			if(document.createElement('audio').canPlayType('audio/mpeg')) {
-				var audio = new Audio('audio/stepping_stones.mp3');
+				var audio = new Audio('audio/LOZ_Secret.mp3');
 			} else {
-				var audio = new Audio('audio/stepping_stones.ogg');
+				var audio = new Audio('audio/LOZ_Secret.ogg');
 			}
 			audio.play();
 		}
